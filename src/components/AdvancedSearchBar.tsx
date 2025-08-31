@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Search, X, Filter, Calendar, Clock, Tag, Globe } from 'lucide-react';
 import type { SearchFilters, Tag as TagType } from '../utils/types';
 
@@ -119,7 +119,7 @@ export function AdvancedSearchBar({
     <div className="relative">
       <div className="relative">
         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-          <Search className="h-5 w-5 text-gray-400" />
+          <Search className="h-5 w-5" style={{ color: 'var(--color-text-muted)' }} />
         </div>
         
         <input
@@ -136,15 +136,22 @@ export function AdvancedSearchBar({
               clearSearch();
             }
           }}
-          className="block w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+          className="block w-full pl-10 pr-12 py-3 border rounded-xl focus:outline-none focus:ring-2 text-sm"
+          style={{
+            backgroundColor: 'var(--color-bg)',
+            borderColor: 'var(--color-border)',
+            color: 'var(--color-text-primary)',
+            '--tw-ring-color': 'var(--color-accent)'
+          } as React.CSSProperties}
           placeholder={placeholder}
         />
 
-        <div className="absolute inset-y-0 right-0 flex items-center">
+        <div className="absolute inset-y-0 right-0 flex items-center pr-3">
           {(filters.query || hasActiveFilters) && (
             <button
               onClick={clearSearch}
-              className="p-2 text-gray-400 hover:text-gray-600"
+              className="p-1 rounded transition-colors hover:bg-modern-accent hover:text-black"
+              style={{ color: 'var(--color-text-muted)' }}
               title="Clear search"
             >
               <X className="h-4 w-4" />

@@ -345,11 +345,8 @@ function App() {
   }
 
   return (
-    <div className={`min-h-screen transition-colors duration-200 ${
-      settings.theme === 'dark' || (settings.theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)
-        ? 'dark bg-gray-900' 
-        : 'bg-gray-50'
-    }`}>
+    <div className="min-h-screen transition-colors duration-200 bg-modern-bg"
+         style={{ backgroundColor: 'var(--color-bg)' }}>
       <div className="flex h-screen">
         {/* Sidebar */}
         <Sidebar
@@ -370,7 +367,8 @@ function App() {
         />
 
         {/* Main Content */}
-        <div className="flex-1 flex flex-col overflow-hidden dynamic-bg">
+        <div className="flex-1 flex flex-col overflow-hidden" 
+             style={{ backgroundColor: 'var(--color-bg)' }}>
           {/* Header */}
           <Header onAddItem={handleAddItem} />
           
@@ -388,7 +386,11 @@ function App() {
           ) : (
             <>
               {/* Search Bar */}
-              <div className="px-4 sm:px-6 py-4 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+              <div className="px-4 sm:px-6 py-4 border-b" 
+                   style={{ 
+                     backgroundColor: 'var(--color-surface)', 
+                     borderColor: 'var(--color-border)' 
+                   }}>
                 <AdvancedSearchBar
                   filters={filters}
                   onFiltersChange={setFilters}
@@ -402,7 +404,7 @@ function App() {
                 {/* View Controls */}
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center gap-4">
-                    <h1 className="text-xl font-semibold text-gray-900 dark:text-white">
+                    <h1 className="text-xl font-semibold" style={{ color: 'var(--color-text-primary)' }}>
                       {filters.query ? `Search results for "${filters.query}"` : 'Reading List'}
                     </h1>
                     {!networkState.isOnline && (

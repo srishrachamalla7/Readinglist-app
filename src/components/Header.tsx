@@ -1,4 +1,3 @@
-import React from 'react';
 import { BookOpen, Plus, Download } from 'lucide-react';
 import { pwaManager } from '../utils/pwa';
 
@@ -21,16 +20,20 @@ export function Header({ onAddItem }: HeaderProps) {
   const showInstallButton = pwaManager.isInstallable() && (window as any).deferredPrompt;
 
   return (
-    <header className="bg-white shadow-sm border-b border-gray-200">
+    <header className="shadow-sm border-b" 
+            style={{ 
+              backgroundColor: 'var(--color-surface)', 
+              borderColor: 'var(--color-border)' 
+            }}>
       <div className="max-w-4xl mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-blue-600 rounded-lg">
-              <BookOpen className="text-white" size={24} />
+            <div className="p-2 rounded-lg" style={{ backgroundColor: 'var(--color-accent)' }}>
+              <BookOpen className="text-black" size={24} />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-gray-900">ReadingList</h1>
-              <p className="text-sm text-gray-500">Your personal reading tracker</p>
+              <h1 className="text-xl font-bold" style={{ color: 'var(--color-text-primary)' }}>ReadingList</h1>
+              <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>Your personal reading tracker</p>
             </div>
           </div>
 
@@ -38,7 +41,8 @@ export function Header({ onAddItem }: HeaderProps) {
             {showInstallButton && (
               <button
                 onClick={handleInstall}
-                className="flex items-center gap-2 px-3 py-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors text-sm font-medium"
+                className="flex items-center gap-2 px-3 py-2 rounded-lg transition-colors text-sm font-medium hover:bg-modern-accent hover:text-black"
+                style={{ color: 'var(--color-accent)' }}
               >
                 <Download size={16} />
                 Install App
@@ -47,7 +51,8 @@ export function Header({ onAddItem }: HeaderProps) {
             
             <button
               onClick={onAddItem}
-              className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+              className="flex items-center gap-2 px-4 py-2 rounded-lg transition-colors font-medium hover:opacity-80"
+              style={{ backgroundColor: 'var(--color-accent)', color: '#000000' }}
             >
               <Plus size={16} />
               Add Item

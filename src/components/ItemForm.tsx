@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { X, Save, Plus, Globe, Clock, AlertCircle, CheckCircle, Loader } from 'lucide-react';
 import { useTags } from '../hooks/useTags';
 import { tagStore } from '../stores/tagStore';
@@ -137,15 +137,19 @@ export function ItemForm({ item, onSave, onCancel }: ItemFormProps) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white rounded-xl shadow-lg w-full max-w-md max-h-[90vh] overflow-y-auto">
-        <div className="flex items-center justify-between p-6 border-b border-gray-200">
-          <h2 className="text-xl font-semibold text-gray-900">
+    <div className="fixed inset-0 flex items-center justify-center p-4 z-50" 
+         style={{ backgroundColor: 'rgba(0, 0, 0, 0.7)' }}>
+      <div className="rounded-2xl shadow-modal w-full max-w-2xl max-h-[90vh] overflow-y-auto"
+           style={{ backgroundColor: 'var(--color-modal)' }}>
+        <div className="flex items-center justify-between p-6 border-b" 
+             style={{ borderColor: 'var(--color-border)' }}>
+          <h2 className="text-xl font-semibold" style={{ color: 'var(--color-text-primary)' }}>
             {item ? 'Edit Item' : 'Add New Item'}
           </h2>
           <button
             onClick={onCancel}
-            className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
+            className="p-2 rounded-lg transition-colors hover:bg-modern-accent hover:text-black"
+            style={{ color: 'var(--color-text-muted)' }}
           >
             <X size={20} />
           </button>
@@ -304,13 +308,20 @@ export function ItemForm({ item, onSave, onCancel }: ItemFormProps) {
                   value={newTagName}
                   onChange={(e) => setNewTagName(e.target.value)}
                   placeholder="Create new tag"
-                  className="flex-1 px-3 py-1 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="flex-1 px-3 py-1 text-sm border rounded-lg focus:ring-2 focus:outline-none"
+              style={{
+                backgroundColor: 'var(--color-bg)',
+                borderColor: 'var(--color-border)',
+                color: 'var(--color-text-primary)',
+                '--tw-ring-color': 'var(--color-accent)'
+              } as React.CSSProperties}
                   onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), handleAddNewTag())}
                 />
                 <button
                   type="button"
                   onClick={handleAddNewTag}
-                  className="px-3 py-1 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm"
+                  className="px-3 py-1 rounded-lg transition-colors text-sm hover:opacity-80"
+                  style={{ backgroundColor: 'var(--color-accent)', color: '#000000' }}
                 >
                   <Plus size={14} />
                 </button>
@@ -335,13 +346,18 @@ export function ItemForm({ item, onSave, onCancel }: ItemFormProps) {
             <button
               type="button"
               onClick={onCancel}
-              className="flex-1 px-4 py-2 text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+              className="flex-1 px-4 py-2 border rounded-lg transition-colors hover:bg-modern-accent hover:text-black"
+              style={{
+                color: 'var(--color-text-primary)',
+                borderColor: 'var(--color-border)'
+              }}
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"
+              className="flex-1 px-4 py-2 rounded-lg transition-colors flex items-center justify-center gap-2 hover:opacity-80"
+              style={{ backgroundColor: 'var(--color-accent)', color: '#000000' }}
             >
               <Save size={16} />
               {item ? 'Update' : 'Add'} Item

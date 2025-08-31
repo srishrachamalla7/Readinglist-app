@@ -62,33 +62,36 @@
   background-color: var(--color-modal) !important;
 }
 
-/* Priority dots using dynamic colors */
+/* Priority dots using modern theme colors */
 .priority-dot-low {
-  background-color: #10b981 !important;
+  background-color: #5EDC9A !important; /* Green */
 }
 
-.priority-dot-medium,
+.priority-dot-medium {
+  background-color: #F7CE45 !important; /* Yellow */
+}
+
 .priority-dot-high {
-  background-color: var(--color-accent) !important;
+  background-color: #F97316 !important; /* Orange */
 }
 
 .priority-dot-urgent {
-  background-color: #ef4444 !important;
+  background-color: #E6506E !important; /* Red/Pink */
 }
 
-/* Status indicators */
+/* Status indicators using modern theme colors */
 .status-dot-unread {
-  background-color: var(--color-primary) !important;
+  background-color: #B0B3B8 !important; /* Muted gray */
 }
 
 .status-dot-reading {
-  background-color: #f59e0b !important;
+  background-color: #F7CE45 !important; /* Yellow accent */
 }
 
 .status-dot-completed {
-  background-color: #10b981 !important;
+  background-color: #5EDC9A !important; /* Green */
 }
 
 .status-dot-archived {
-  background-color: #8b5cf6 !important;
+  background-color: #8B5CF6 !important; /* Purple */
 }

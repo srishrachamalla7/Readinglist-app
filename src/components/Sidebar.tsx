@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { 
   Filter, 
-  Tag, 
   ChevronDown,
   ChevronRight,
   X,
@@ -98,22 +97,28 @@ export function Sidebar({
 
   if (isCollapsed) {
     return (
-      <div className="w-16 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 flex flex-col items-center py-6 space-y-4">
+      <div className="w-16 flex flex-col items-center py-6 space-y-4 border-r shadow-sidebar"
+           style={{ 
+             backgroundColor: 'var(--color-surface)', 
+             borderColor: 'var(--color-border)' 
+           }}>
         <button
           onClick={onToggleCollapse}
-          className="p-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+          className="p-2 rounded-lg transition-colors hover:bg-modern-accent hover:text-black"
+          style={{ color: 'var(--color-text-secondary)' }}
           title="Expand sidebar"
         >
           <Filter size={20} />
         </button>
-        <div className="w-8 h-px bg-gray-200 dark:bg-gray-700" />
+        <div className="w-8 h-px" style={{ backgroundColor: 'var(--color-border)' }} />
         <button
           onClick={() => onViewChange?.('dashboard')}
           className={`p-2 rounded-lg transition-colors ${
             currentView === 'dashboard'
-              ? 'text-primary-600 bg-primary-50 dark:bg-primary-900/20 dark:text-primary-400'
-              : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800'
+              ? 'bg-modern-accent text-black'
+              : 'hover:bg-modern-accent hover:text-black'
           }`}
+          style={{ color: currentView === 'dashboard' ? '#000' : 'var(--color-text-secondary)' }}
           title="Dashboard"
         >
           <Home size={20} />
@@ -122,9 +127,10 @@ export function Sidebar({
           onClick={() => onViewChange?.('analytics')}
           className={`p-2 rounded-lg transition-colors ${
             currentView === 'analytics'
-              ? 'text-primary-600 bg-primary-50 dark:bg-primary-900/20 dark:text-primary-400'
-              : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800'
+              ? 'bg-modern-accent text-black'
+              : 'hover:bg-modern-accent hover:text-black'
           }`}
+          style={{ color: currentView === 'analytics' ? '#000' : 'var(--color-text-secondary)' }}
           title="Analytics"
         >
           <BarChart3 size={20} />
@@ -132,14 +138,16 @@ export function Sidebar({
         <div className="flex-1" />
         <button
           onClick={onThemeToggle}
-          className="p-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+          className="p-2 rounded-lg transition-colors hover:bg-modern-accent hover:text-black"
+          style={{ color: 'var(--color-text-secondary)' }}
           title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
         >
           {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
         </button>
         <button
           onClick={onOpenSettings}
-          className="p-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+          className="p-2 rounded-lg transition-colors hover:bg-modern-accent hover:text-black"
+          style={{ color: 'var(--color-text-secondary)' }}
           title="Settings"
         >
           <Settings size={20} />
@@ -149,23 +157,29 @@ export function Sidebar({
   }
 
   return (
-    <div className={`w-80 dynamic-sidebar border-r dynamic-border flex flex-col h-full transition-all duration-300 ${
+    <div className={`w-80 border-r flex flex-col h-full transition-all duration-300 shadow-sidebar ${
       isCollapsed ? 'w-16' : 'w-80'
-    }`}>
-      <div className="p-6 border-b border-gray-200 dark:border-gray-800">
+    }`}
+         style={{ 
+           backgroundColor: 'var(--color-surface)', 
+           borderColor: 'var(--color-border)' 
+         }}>
+      <div className="p-6 border-b" style={{ borderColor: 'var(--color-border)' }}>
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
-              <BookOpen size={16} className="text-white" />
+            <div className="w-8 h-8 rounded-lg flex items-center justify-center" 
+                 style={{ backgroundColor: 'var(--color-accent)' }}>
+              <BookOpen size={16} className="text-black" />
             </div>
             <div>
-              <h1 className="text-lg font-semibold text-gray-900 dark:text-white">ReadingList</h1>
-              <p className="text-xs text-gray-500 dark:text-gray-400">Organize & track</p>
+              <h1 className="text-lg font-semibold" style={{ color: 'var(--color-text-primary)' }}>ReadingList</h1>
+              <p className="text-xs" style={{ color: 'var(--color-text-muted)' }}>Organize & track</p>
             </div>
           </div>
           <button
             onClick={onToggleCollapse}
-            className="p-1.5 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+            className="p-1.5 rounded-lg transition-colors hover:bg-modern-accent hover:text-black"
+            style={{ color: 'var(--color-text-secondary)' }}
             title="Collapse sidebar"
           >
             <ChevronRight size={16} />
@@ -178,9 +192,10 @@ export function Sidebar({
             onClick={() => onViewChange?.('dashboard')}
             className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
               currentView === 'dashboard'
-                ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300'
-                : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
+                ? 'bg-modern-accent text-black'
+                : 'hover:bg-modern-accent hover:text-black'
             }`}
+            style={{ color: currentView === 'dashboard' ? '#000' : 'var(--color-text-primary)' }}
           >
             <Home size={18} />
             Reading List
@@ -189,9 +204,10 @@ export function Sidebar({
             onClick={() => onViewChange?.('analytics')}
             className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
               currentView === 'analytics'
-                ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300'
-                : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
+                ? 'bg-modern-accent text-black'
+                : 'hover:bg-modern-accent hover:text-black'
             }`}
+            style={{ color: currentView === 'analytics' ? '#000' : 'var(--color-text-primary)' }}
           >
             <BarChart3 size={18} />
             Analytics
@@ -201,7 +217,8 @@ export function Sidebar({
         {hasActiveFilters && (
           <button
             onClick={clearAllFilters}
-            className="flex items-center gap-2 text-sm text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 mt-4 px-3 py-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
+            className="flex items-center gap-2 text-sm mt-4 px-3 py-2 rounded-lg transition-colors hover:bg-modern-chart-negative hover:text-white"
+            style={{ color: 'var(--color-chart-negative)' }}
           >
             <X size={14} />
             Clear all filters
@@ -217,10 +234,10 @@ export function Sidebar({
             onClick={() => toggleSection('tags')}
             className="flex items-center justify-between w-full text-left mb-3"
           >
-            <span className="text-sm font-medium text-gray-900 dark:text-white">Tags</span>
+            <span className="text-sm font-medium" style={{ color: 'var(--color-text-primary)' }}>Tags</span>
             <div className="flex items-center gap-2">
-              <span className="text-xs text-gray-500 dark:text-gray-400">{tags.length}</span>
-              {expandedSections.tags ? <ChevronDown size={16} className="text-gray-400" /> : <ChevronRight size={16} className="text-gray-400" />}
+              <span className="text-xs" style={{ color: 'var(--color-text-muted)' }}>{tags.length}</span>
+              {expandedSections.tags ? <ChevronDown size={16} style={{ color: 'var(--color-text-muted)' }} /> : <ChevronRight size={16} style={{ color: 'var(--color-text-muted)' }} />}
             </div>
           </button>
           
@@ -238,32 +255,41 @@ export function Sidebar({
                           : filters.tags.filter(t => t !== tag.id);
                         onFiltersChange({ ...filters, tags: newTags });
                       }}
-                      className="w-4 h-4 rounded border-gray-300 dark:border-gray-600 text-primary-600 focus:ring-primary-500 dark:bg-gray-800"
+                      className="w-4 h-4 rounded focus:ring-2"
+                      style={{ 
+                        borderColor: 'var(--color-border)',
+                        backgroundColor: 'var(--color-surface)',
+                        accentColor: 'var(--color-accent)'
+                      }}
                     />
                   </div>
                   <div
                     className="w-2 h-2 rounded-full flex-shrink-0"
                     style={{ backgroundColor: tag.color || '#6b7280' }}
                   />
-                  <span className="text-sm text-gray-700 dark:text-gray-300 flex-1 truncate">{tag.name}</span>
-                  <span className="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded">{tag.usageCount || 0}</span>
+                  <span className="text-sm flex-1 truncate" style={{ color: 'var(--color-text-primary)' }}>{tag.name}</span>
+                  <span className="text-xs px-1.5 py-0.5 rounded" 
+                        style={{ 
+                          color: 'var(--color-text-muted)', 
+                          backgroundColor: 'var(--color-bg)' 
+                        }}>{tag.usageCount || 0}</span>
                 </label>
               ))}
               {tags.length === 0 && (
-                <p className="text-sm text-gray-500 dark:text-gray-400 italic py-2">No tags yet</p>
+                <p className="text-sm italic py-2" style={{ color: 'var(--color-text-muted)' }}>No tags yet</p>
               )}
             </div>
           )}
         </div>
         
         {/* Status Filter */}
-        <div className="py-4 border-t border-gray-100 dark:border-gray-800">
+        <div className="py-4 border-t" style={{ borderColor: 'var(--color-border)' }}>
           <button
             onClick={() => toggleSection('status')}
             className="flex items-center justify-between w-full text-left mb-3"
           >
-            <span className="text-sm font-medium text-gray-900 dark:text-white">Status</span>
-            {expandedSections.status ? <ChevronDown size={16} className="text-gray-400" /> : <ChevronRight size={16} className="text-gray-400" />}
+            <span className="text-sm font-medium" style={{ color: 'var(--color-text-primary)' }}>Status</span>
+            {expandedSections.status ? <ChevronDown size={16} style={{ color: 'var(--color-text-muted)' }} /> : <ChevronRight size={16} style={{ color: 'var(--color-text-muted)' }} />}
           </button>
           
           {expandedSections.status && (
@@ -271,10 +297,10 @@ export function Sidebar({
               {statusOptions.map(({ value, label }) => {
                 const isSelected = filters.status.includes(value);
                 const statusColors = {
-                  unread: 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300',
-                  reading: 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300',
-                  completed: 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300',
-                  archived: 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300'
+                  unread: { backgroundColor: '#B0B3B8', color: '#FFFFFF' },
+                  reading: { backgroundColor: '#F7CE45', color: '#000000' },
+                  completed: { backgroundColor: '#5EDC9A', color: '#000000' },
+                  archived: { backgroundColor: '#8B5CF6', color: '#FFFFFF' }
                 };
                 
                 return (
@@ -288,9 +314,15 @@ export function Sidebar({
                           : filters.status.filter(s => s !== value);
                         onFiltersChange({ ...filters, status: newStatus });
                       }}
-                      className="w-4 h-4 rounded border-gray-300 dark:border-gray-600 text-primary-600 focus:ring-primary-500 dark:bg-gray-800"
+                      className="w-4 h-4 rounded focus:ring-2"
+                      style={{ 
+                        borderColor: 'var(--color-border)',
+                        backgroundColor: 'var(--color-surface)',
+                        accentColor: 'var(--color-accent)'
+                      }}
                     />
-                    <div className={`px-2 py-1 rounded-md text-xs font-medium ${statusColors[value]} flex-1`}>
+                    <div className="px-2 py-1 rounded-md text-xs font-medium flex-1"
+                         style={statusColors[value]}>
                       {label}
                     </div>
                   </label>
@@ -301,13 +333,13 @@ export function Sidebar({
         </div>
 
         {/* Priority Filter */}
-        <div className="py-4 border-t border-gray-100 dark:border-gray-800">
+        <div className="py-4 border-t" style={{ borderColor: 'var(--color-border)' }}>
           <button
             onClick={() => toggleSection('priority')}
             className="flex items-center justify-between w-full text-left mb-3"
           >
-            <span className="text-sm font-medium text-gray-900 dark:text-white">Priority</span>
-            {expandedSections.priority ? <ChevronDown size={16} className="text-gray-400" /> : <ChevronRight size={16} className="text-gray-400" />}
+            <span className="text-sm font-medium" style={{ color: 'var(--color-text-primary)' }}>Priority</span>
+            {expandedSections.priority ? <ChevronDown size={16} style={{ color: 'var(--color-text-muted)' }} /> : <ChevronRight size={16} style={{ color: 'var(--color-text-muted)' }} />}
           </button>
           
           {expandedSections.priority && (
@@ -315,10 +347,10 @@ export function Sidebar({
               {priorityOptions.map(({ value, label }) => {
                 const isSelected = filters.priority.includes(value);
                 const priorityColors = {
-                  low: 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300',
-                  medium: 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300',
-                  high: 'bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300',
-                  urgent: 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300'
+                  low: { backgroundColor: '#5EDC9A', color: '#000000' },
+                  medium: { backgroundColor: '#F7CE45', color: '#000000' },
+                  high: { backgroundColor: '#F97316', color: '#FFFFFF' },
+                  urgent: { backgroundColor: '#E6506E', color: '#FFFFFF' }
                 };
                 
                 return (
@@ -332,9 +364,15 @@ export function Sidebar({
                           : filters.priority.filter(p => p !== value);
                         onFiltersChange({ ...filters, priority: newPriority });
                       }}
-                      className="w-4 h-4 rounded border-gray-300 dark:border-gray-600 text-primary-600 focus:ring-primary-500 dark:bg-gray-800"
+                      className="w-4 h-4 rounded focus:ring-2"
+                      style={{ 
+                        borderColor: 'var(--color-border)',
+                        backgroundColor: 'var(--color-surface)',
+                        accentColor: 'var(--color-accent)'
+                      }}
                     />
-                    <div className={`px-2 py-1 rounded-md text-xs font-medium ${priorityColors[value]} flex-1`}>
+                    <div className="px-2 py-1 rounded-md text-xs font-medium flex-1"
+                         style={priorityColors[value]}>
                       {label}
                     </div>
                   </label>
@@ -345,15 +383,15 @@ export function Sidebar({
         </div>
 
         {/* Collections Filter */}
-        <div className="py-4 border-t border-gray-100 dark:border-gray-800">
+        <div className="py-4 border-t" style={{ borderColor: 'var(--color-border)' }}>
           <button
             onClick={() => toggleSection('collections')}
             className="flex items-center justify-between w-full text-left mb-3"
           >
-            <span className="text-sm font-medium text-gray-900 dark:text-white">Collections</span>
+            <span className="text-sm font-medium" style={{ color: 'var(--color-text-primary)' }}>Collections</span>
             <div className="flex items-center gap-2">
-              <span className="text-xs text-gray-500 dark:text-gray-400">{collections.length}</span>
-              {expandedSections.collections ? <ChevronDown size={16} className="text-gray-400" /> : <ChevronRight size={16} className="text-gray-400" />}
+              <span className="text-xs" style={{ color: 'var(--color-text-muted)' }}>{collections.length}</span>
+              {expandedSections.collections ? <ChevronDown size={16} style={{ color: 'var(--color-text-muted)' }} /> : <ChevronRight size={16} style={{ color: 'var(--color-text-muted)' }} />}
             </div>
           </button>
           
@@ -370,19 +408,28 @@ export function Sidebar({
                         : filters.collections.filter(c => c !== collection.id);
                       onFiltersChange({ ...filters, collections: newCollections });
                     }}
-                    className="w-4 h-4 rounded border-gray-300 dark:border-gray-600 text-primary-600 focus:ring-primary-500 dark:bg-gray-800"
+                    className="w-4 h-4 rounded focus:ring-2"
+                    style={{ 
+                      borderColor: 'var(--color-border)',
+                      backgroundColor: 'var(--color-surface)',
+                      accentColor: 'var(--color-accent)'
+                    }}
                   />
                   <div className="flex items-center gap-2 flex-1">
                     {collection.icon && <span className="text-sm">{collection.icon}</span>}
-                    <span className="text-sm text-gray-700 dark:text-gray-300 truncate">{collection.name}</span>
+                    <span className="text-sm truncate" style={{ color: 'var(--color-text-primary)' }}>{collection.name}</span>
                     {collection.isSystem && (
-                      <span className="text-xs bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 px-1.5 py-0.5 rounded">Auto</span>
+                      <span className="text-xs px-1.5 py-0.5 rounded" 
+                            style={{ 
+                              backgroundColor: 'var(--color-accent)', 
+                              color: '#000000' 
+                            }}>Auto</span>
                     )}
                   </div>
                 </label>
               ))}
               {collections.length === 0 && (
-                <p className="text-sm text-gray-500 dark:text-gray-400 italic py-2">No collections yet</p>
+                <p className="text-sm italic py-2" style={{ color: 'var(--color-text-muted)' }}>No collections yet</p>
               )}
             </div>
           )}
@@ -390,12 +437,13 @@ export function Sidebar({
       </div>
 
       {/* Footer Actions */}
-      <div className="p-4 border-t border-gray-200 dark:border-gray-800 space-y-1">
+      <div className="p-4 border-t space-y-1" style={{ borderColor: 'var(--color-border)' }}>
         <div className="flex items-center justify-between mb-3">
-          <span className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">Actions</span>
+          <span className="text-xs font-medium uppercase tracking-wide" style={{ color: 'var(--color-text-muted)' }}>Actions</span>
           <button
             onClick={onThemeToggle}
-            className="p-1.5 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+            className="p-1.5 rounded-lg transition-colors hover:bg-modern-accent hover:text-black"
+            style={{ color: 'var(--color-text-secondary)' }}
             title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
           >
             {theme === 'light' ? <Moon size={16} /> : <Sun size={16} />}
@@ -403,21 +451,24 @@ export function Sidebar({
         </div>
         <button
           onClick={onExport}
-          className="w-full flex items-center gap-3 px-3 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+          className="w-full flex items-center gap-3 px-3 py-2.5 text-sm rounded-lg transition-colors hover:bg-modern-accent hover:text-black"
+          style={{ color: 'var(--color-text-primary)' }}
         >
           <Download size={16} />
           Export Data
         </button>
         <button
           onClick={onImport}
-          className="w-full flex items-center gap-3 px-3 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+          className="w-full flex items-center gap-3 px-3 py-2.5 text-sm rounded-lg transition-colors hover:bg-modern-accent hover:text-black"
+          style={{ color: 'var(--color-text-primary)' }}
         >
           <Upload size={16} />
           Import Data
         </button>
         <button
           onClick={onOpenSettings}
-          className="w-full flex items-center gap-3 px-3 py-2.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+          className="w-full flex items-center gap-3 px-3 py-2.5 text-sm rounded-lg transition-colors hover:bg-modern-accent hover:text-black"
+          style={{ color: 'var(--color-text-primary)' }}
         >
           <Settings size={16} />
           Settings

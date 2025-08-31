@@ -44,7 +44,7 @@ A fully-featured Progressive Web App (PWA) for managing your personal reading li
 ### Installation
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/srishrachamalla7/Readinglist-app.git
 cd ReadingList
 
 # Install dependencies
