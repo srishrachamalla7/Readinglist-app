@@ -1,6 +1,7 @@
-/* Modern Dark Theme Color Variables */
+/* Multi-Theme System */
 :root {
-  /* Modern dark theme colors */
+  /* Default: Modern Dashboard Theme (Dark) */
+  --theme-name: 'Modern Dashboard';
   --color-bg: #16171B;
   --color-surface: #282C2F;
   --color-border: #33363A;
@@ -15,19 +16,244 @@
   --color-chart-positive: #5EDC9A;
   --color-chart-negative: #E6506E;
   
+  /* Typography */
+  --font-primary: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  --font-secondary: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  
   /* Legacy support */
   --color-primary: #F7CE45;
   --color-sidebar: #282C2F;
   --color-background: #16171B;
 }
 
-/* Apply dynamic colors */
+/* Notion Style Theme (Minimal & Neutral) */
+[data-theme="notion"] {
+  --theme-name: 'Notion Style';
+  --color-bg: #FFFFFF;
+  --color-surface: #F7F6F3;
+  --color-border: #E9E9E7;
+  --color-text-primary: #2F3437;
+  --color-text-secondary: #787774;
+  --color-text-muted: #9B9A97;
+  --color-accent: #2383E2;
+  --color-modal: #FFFFFF;
+  
+  /* Chart colors */
+  --color-chart-primary: #2383E2;
+  --color-chart-positive: #0F7B0F;
+  --color-chart-negative: #E03E3E;
+  
+  /* Typography */
+  --font-primary: 'Inter', system-ui, sans-serif;
+  --font-secondary: 'Inter', system-ui, sans-serif;
+}
+
+/* Notion Dark Mode */
+[data-theme="notion-dark"] {
+  --theme-name: 'Notion Dark';
+  --color-bg: #191919;
+  --color-surface: #2F3437;
+  --color-border: #373C40;
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #9B9A97;
+  --color-text-muted: #6F6E69;
+  --color-accent: #5B9BD5;
+  --color-modal: #2F3437;
+  
+  /* Chart colors */
+  --color-chart-primary: #5B9BD5;
+  --color-chart-positive: #4DAB9A;
+  --color-chart-negative: #E25C5C;
+  
+  /* Typography */
+  --font-primary: 'Inter', system-ui, sans-serif;
+  --font-secondary: 'Inter', system-ui, sans-serif;
+}
+
+/* Pocket Style Theme (Warm & Reading-Focused) */
+[data-theme="pocket"] {
+  --theme-name: 'Pocket Style';
+  --color-bg: #FEFEFE;
+  --color-surface: #F8F8F8;
+  --color-border: #E8E8E8;
+  --color-text-primary: #333333;
+  --color-text-secondary: #666666;
+  --color-text-muted: #999999;
+  --color-accent: #EF4056;
+  --color-modal: #FFFFFF;
+  
+  /* Chart colors */
+  --color-chart-primary: #EF4056;
+  --color-chart-positive: #00A86B;
+  --color-chart-negative: #FF6B6B;
+  
+  /* Typography */
+  --font-primary: 'Roboto', system-ui, sans-serif;
+  --font-secondary: 'Roboto', system-ui, sans-serif;
+}
+
+/* Pocket Dark Mode */
+[data-theme="pocket-dark"] {
+  --theme-name: 'Pocket Dark';
+  --color-bg: #1A1A1A;
+  --color-surface: #2D2D2D;
+  --color-border: #404040;
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #CCCCCC;
+  --color-text-muted: #999999;
+  --color-accent: #FF5A6E;
+  --color-modal: #2D2D2D;
+  
+  /* Chart colors */
+  --color-chart-primary: #FF5A6E;
+  --color-chart-positive: #4ECDC4;
+  --color-chart-negative: #FF8A80;
+  
+  /* Typography */
+  --font-primary: 'Roboto', system-ui, sans-serif;
+  --font-secondary: 'Roboto', system-ui, sans-serif;
+}
+
+/* Goodreads Style Theme (Book-Centric & Rustic) */
+[data-theme="goodreads"] {
+  --theme-name: 'Goodreads Style';
+  --color-bg: #F4F1EA;
+  --color-surface: #FFFFFF;
+  --color-border: #D8D0C1;
+  --color-text-primary: #382110;
+  --color-text-secondary: #5C4A37;
+  --color-text-muted: #8B7355;
+  --color-accent: #00635D;
+  --color-modal: #FFFFFF;
+  
+  /* Chart colors */
+  --color-chart-primary: #00635D;
+  --color-chart-positive: #228B22;
+  --color-chart-negative: #B22222;
+  
+  /* Typography */
+  --font-primary: 'Merriweather', Georgia, serif;
+  --font-secondary: 'Source Sans Pro', system-ui, sans-serif;
+}
+
+/* Goodreads Dark Mode */
+[data-theme="goodreads-dark"] {
+  --theme-name: 'Goodreads Dark';
+  --color-bg: #1C1611;
+  --color-surface: #2A2318;
+  --color-border: #3D3426;
+  --color-text-primary: #F4F1EA;
+  --color-text-secondary: #D4C4A8;
+  --color-text-muted: #A08B6F;
+  --color-accent: #4A9B8E;
+  --color-modal: #2A2318;
+  
+  /* Chart colors */
+  --color-chart-primary: #4A9B8E;
+  --color-chart-positive: #6B8E23;
+  --color-chart-negative: #CD5C5C;
+  
+  /* Typography */
+  --font-primary: 'Merriweather', Georgia, serif;
+  --font-secondary: 'Source Sans Pro', system-ui, sans-serif;
+}
+
+/* Playful Startup Theme (Bright & Energetic) */
+[data-theme="startup"] {
+  --theme-name: 'Playful Startup';
+  --color-bg: #FAFBFF;
+  --color-surface: #FFFFFF;
+  --color-border: #E1E5F7;
+  --color-text-primary: #1A1D29;
+  --color-text-secondary: #4A5568;
+  --color-text-muted: #718096;
+  --color-accent: #667EEA;
+  --color-modal: #FFFFFF;
+  
+  /* Chart colors */
+  --color-chart-primary: #667EEA;
+  --color-chart-positive: #48BB78;
+  --color-chart-negative: #F56565;
+  
+  /* Typography */
+  --font-primary: 'Poppins', system-ui, sans-serif;
+  --font-secondary: 'Poppins', system-ui, sans-serif;
+}
+
+/* Playful Startup Dark Mode */
+[data-theme="startup-dark"] {
+  --theme-name: 'Startup Dark';
+  --color-bg: #0D1117;
+  --color-surface: #161B22;
+  --color-border: #21262D;
+  --color-text-primary: #F0F6FC;
+  --color-text-secondary: #8B949E;
+  --color-text-muted: #6E7681;
+  --color-accent: #58A6FF;
+  --color-modal: #161B22;
+  
+  /* Chart colors */
+  --color-chart-primary: #58A6FF;
+  --color-chart-positive: #3FB950;
+  --color-chart-negative: #F85149;
+  
+  /* Typography */
+  --font-primary: 'Poppins', system-ui, sans-serif;
+  --font-secondary: 'Poppins', system-ui, sans-serif;
+}
+
+/* Theme-aware utility classes */
+.theme-bg {
+  background-color: var(--color-bg) !important;
+}
+
+.theme-surface {
+  background-color: var(--color-surface) !important;
+}
+
+.theme-border {
+  border-color: var(--color-border) !important;
+}
+
+.theme-text-primary {
+  color: var(--color-text-primary) !important;
+}
+
+.theme-text-secondary {
+  color: var(--color-text-secondary) !important;
+}
+
+.theme-text-muted {
+  color: var(--color-text-muted) !important;
+}
+
+.theme-accent {
+  background-color: var(--color-accent) !important;
+}
+
+.theme-accent-text {
+  color: var(--color-accent) !important;
+}
+
+.theme-modal {
+  background-color: var(--color-modal) !important;
+}
+
+.theme-font-primary {
+  font-family: var(--font-primary) !important;
+}
+
+.theme-font-secondary {
+  font-family: var(--font-secondary) !important;
+}
+
+/* Legacy support */
 .dynamic-sidebar {
-  background-color: var(--color-sidebar) !important;
+  background-color: var(--color-surface) !important;
 }
 
 .dynamic-bg {
-  background-color: var(--color-background) !important;
+  background-color: var(--color-bg) !important;
 }
 
 .dynamic-surface {
@@ -39,7 +265,7 @@
 }
 
 .dynamic-primary {
-  background-color: var(--color-primary) !important;
+  background-color: var(--color-accent) !important;
 }
 
 .dynamic-accent {

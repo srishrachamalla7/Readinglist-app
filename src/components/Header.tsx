@@ -1,11 +1,13 @@
 import { BookOpen, Plus, Download } from 'lucide-react';
 import { pwaManager } from '../utils/pwa';
+import { ThemeSwitcherButton } from './ThemeSwitcher';
 
 interface HeaderProps {
   onAddItem: () => void;
+  onOpenThemeSwitcher: () => void;
 }
 
-export function Header({ onAddItem }: HeaderProps) {
+export function Header({ onAddItem, onOpenThemeSwitcher }: HeaderProps) {
   const handleInstall = async () => {
     try {
       const installed = await pwaManager.promptInstall();
@@ -38,6 +40,8 @@ export function Header({ onAddItem }: HeaderProps) {
           </div>
 
           <div className="flex items-center gap-2">
+            <ThemeSwitcherButton onClick={onOpenThemeSwitcher} />
+            
             {showInstallButton && (
               <button
                 onClick={handleInstall}

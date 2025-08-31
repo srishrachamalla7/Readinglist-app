@@ -11,6 +11,7 @@ import { ToastContainer } from './components/Toast';
 import { Settings } from './components/Settings';
 import { Analytics } from './components/Analytics';
 import { ColorPicker } from './components/ColorPicker';
+import { ThemeSwitcher } from './components/ThemeSwitcher';
 import { useItems } from './hooks/useItems';
 import { useCollections } from './hooks/useCollections';
 import { useSettings } from './hooks/useSettings';
@@ -43,6 +44,7 @@ function App() {
   const [showForm, setShowForm] = useState(false);
   const [editingItem, setEditingItem] = useState<Item | undefined>();
   const [showSettings, setShowSettings] = useState(false);
+  const [showThemeSwitcher, setShowThemeSwitcher] = useState(false);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(settings.sidebarCollapsed);
   const [notifications, setNotifications] = useState<ToastNotification[]>([]);
   const [networkState, setNetworkState] = useState<NetworkStatus>({ isOnline: true, pendingOperations: 0 });
@@ -90,6 +92,7 @@ function App() {
       action: () => {
         setShowForm(false);
         setShowSettings(false);
+        setShowThemeSwitcher(false);
         setEditingItem(undefined);
       }
     });
@@ -370,7 +373,10 @@ function App() {
         <div className="flex-1 flex flex-col overflow-hidden" 
              style={{ backgroundColor: 'var(--color-bg)' }}>
           {/* Header */}
-          <Header onAddItem={handleAddItem} />
+          <Header 
+            onAddItem={handleAddItem} 
+            onOpenThemeSwitcher={() => setShowThemeSwitcher(true)}
+          />
           
           {/* Conditional Content Based on View */}
           {currentView === 'analytics' ? (
@@ -527,6 +533,12 @@ function App() {
           }}
         />
       )}
+
+      {/* Theme Switcher Modal */}
+      <ThemeSwitcher
+        isOpen={showThemeSwitcher}
+        onClose={() => setShowThemeSwitcher(false)}
+      />
 
       {/* Toast Notifications */}
       <ToastContainer
