@@ -1,0 +1,94 @@
+/* Modern Dark Theme Color Variables */
+:root {
+  /* Modern dark theme colors */
+  --color-bg: #16171B;
+  --color-surface: #282C2F;
+  --color-border: #33363A;
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #B0B3B8;
+  --color-text-muted: #6B7280;
+  --color-accent: #F7CE45;
+  --color-modal: #2F3336;
+  
+  /* Chart colors */
+  --color-chart-primary: #F7CE45;
+  --color-chart-positive: #5EDC9A;
+  --color-chart-negative: #E6506E;
+  
+  /* Legacy support */
+  --color-primary: #F7CE45;
+  --color-sidebar: #282C2F;
+  --color-background: #16171B;
+}
+
+/* Apply dynamic colors */
+.dynamic-sidebar {
+  background-color: var(--color-sidebar) !important;
+}
+
+.dynamic-bg {
+  background-color: var(--color-background) !important;
+}
+
+.dynamic-surface {
+  background-color: var(--color-surface) !important;
+}
+
+.dynamic-border {
+  border-color: var(--color-border) !important;
+}
+
+.dynamic-primary {
+  background-color: var(--color-primary) !important;
+}
+
+.dynamic-accent {
+  background-color: var(--color-accent) !important;
+}
+
+.dynamic-text-primary {
+  color: var(--color-text-primary) !important;
+}
+
+.dynamic-text-secondary {
+  color: var(--color-text-secondary) !important;
+}
+
+.dynamic-text-muted {
+  color: var(--color-text-muted) !important;
+}
+
+.dynamic-modal {
+  background-color: var(--color-modal) !important;
+}
+
+/* Priority dots using dynamic colors */
+.priority-dot-low {
+  background-color: #10b981 !important;
+}
+
+.priority-dot-medium,
+.priority-dot-high {
+  background-color: var(--color-accent) !important;
+}
+
+.priority-dot-urgent {
+  background-color: #ef4444 !important;
+}
+
+/* Status indicators */
+.status-dot-unread {
+  background-color: var(--color-primary) !important;
+}
+
+.status-dot-reading {
+  background-color: #f59e0b !important;
+}
+
+.status-dot-completed {
+  background-color: #10b981 !important;
+}
+
+.status-dot-archived {
+  background-color: #8b5cf6 !important;
+}
